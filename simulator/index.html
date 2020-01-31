@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+
+<title>RISCV Processor Simulator - Amogh Akshintala</title>
+<meta name="author" content="Amogh Akshintala" />
+<meta name="description" content="Amogh Akshintala&#39;s web presence..." />
+<meta name="robots" content="index, follow" />
+<meta name="referrer" content="always" />
+
+
+<meta property="og:title" content="RISCV Processor Simulator - Amogh Akshintala" />
+<meta property="og:description" content="Amogh Akshintala&#39;s web presence..." />
+<meta property="og:url" content="https://aakshintala.com" />
+
+<meta property="og:image" content="https://aakshintala.com/images/social.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<meta name="twitter:site" content="@aakshintala" />
+
+
+<link rel="icon" href="https://aakshintala.com/images/favicon.ico" />
+
+
+<link rel="stylesheet" href="https://aakshintala.com/css/minimal.css" type="text/css" media="screen" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+<link rel="stylesheet" href="https://aakshintala.com/css/academicons.min.css" type="text/css" />
+
+
+
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-121294168-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+</head>
+
+<body>
+<div class="centered-one-column">
+    <div>
+	
+	<div class="intro">
+		<div class="name-and-tags">
+		<h1>RISCV Processor Simulator</h1>
+		<hr>
+		</div>
+	</div>
+	
+    
+<div class="nav-list">
+  <ul>
+    <li ><a href="https://aakshintala.com/">Home</a></li>
+    
+    
+      
+        
+    <li><a href="/blog">Blog</a></li>
+        
+    <li><a href="/publications">Publications</a></li>
+        
+    <li><a href="/resume">Resume</a></li>
+        
+    <li><a href="/comp590">COMP 590-154</a></li>
+        
+      
+    
+  </ul>
+</div>
+	<br>
+	
+	<h2 id="overview">Overview</h2>
+<p>Design and implement a RISC-V-compatible processor simulator
+At the minimum, your processor must be able to execute simple RISC-V (RV64IM) programs
+(pre-compiled testcases and the RISC-V tool-chain will be provided),
+via a 5-stage pipeline, multiple functional units with varying latencies,
+and direct mapped instruction and data caches.</p>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+.tg td{font-family:Arial, sans-serif;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg th{font-family:Arial, sans-serif;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-8ot9{border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-8jvv{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-iml5{background-color:#f9f9f9;text-align:left;vertical-align:top}
+.tg .tg-gmdn{background-color:#f9f9f9;text-align:center;vertical-align:top}
+.tg .tg-cbs6{text-align:left;vertical-align:top}
+.tg .tg-e9v8{text-align:center;vertical-align:top}
+</style>
+<center>
+<table class="tg" style="undefined;table-layout: fixed; width: 600px">
+<colgroup>
+<col style="width: 492.005682px">
+<col style="width: 93.005682px">
+</colgroup>
+  <tr>
+    <th class="tg-8jvv">Processor + cache</th>
+    <th class="tg-8ot9">Points</th>
+  </tr>
+  <tr>
+    <td class="tg-iml5">5+ stage pipeline + direct-mapped caches</td>
+    <td class="tg-gmdn">50 pts</td>
+  </tr>
+  <tr>
+    <td class="tg-cbs6">5+ stage pipeline + set-associative caches</td>
+    <td class="tg-e9v8">60 pts</td>
+  </tr>
+  <tr>
+    <td class="tg-iml5">Super-scalar 5-stage pipeline, set-associative cache</td>
+    <td class="tg-gmdn">70 pts</td>
+  </tr>
+  <tr>
+    <td class="tg-cbs6">Super-Scalar, Out-of-order, Set-Associative Caches</td>
+    <td class="tg-e9v8">80 pts</td>
+  </tr>
+</table>
+</center>
+<br>
+You may also add any of the following features to any of the above designs for extra credit.
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+.tg td{font-family:Arial, sans-serif;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg th{font-family:Arial, sans-serif;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-sg5v{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0w8i{text-align:left;vertical-align:top}
+.tg .tg-87db{background-color:#f9f9f9;text-align:left;vertical-align:top}
+</style>
+<center>
+<table class="tg" style="undefined;table-layout: fixed; width: 700px">
+<colgroup>
+<col style="width: 565.005682px">
+<col style="width: 110.005682px">
+</colgroup>
+  <tr>
+    <th class="tg-sg5v">Extra Credit (Can add up to &gt; 80 points)</th>
+    <th class="tg-sg5v">Points</th>
+  </tr>
+  <tr>
+    <td class="tg-87db">Any of the above + Multi-cycle divider and pipelined multiplier</td>
+    <td class="tg-87db">+5 pts</td>
+  </tr>
+  <tr>
+    <td class="tg-0w8i">Any of the above + TLBs</td>
+    <td class="tg-0w8i">+10 pts</td>
+  </tr>
+  <tr>
+    <td class="tg-87db">Any of the above + Branch Prediction</td>
+    <td class="tg-87db">+10 pts</td>
+  </tr>
+  <tr>
+    <td class="tg-0w8i">Any of the above + Speculative Execution</td>
+    <td class="tg-0w8i">+10 pts</td>
+  </tr>
+  <tr>
+    <td class="tg-87db">Any of the above + SMT</td>
+    <td class="tg-87db">+20 pts</td>
+  </tr>
+</table>
+</center>
+<br>
+<p>I will provide the code for the multi-cycle divider and pipelined multiplier as part of the project sekelton code. Please read the code and comments carefully to make sure you know how to use them.
+A pipelined multiplier accepts a new multiplication operation every cycle but generates the result after multiple cycles (just like a normal pipeline)
+A multi-cycle divider accepts a new operation when the &ldquo;start&rdquo; signal is given and takes &ldquo;n&rdquo; cycles to finish it. After that, it can accept another operation.</p>
+<hr>
+<h2 id="getting-the-skeleton-code">Getting the Skeleton Code</h2>
+<p>You can clone the code from [to be updated]. You should implement your processor by modifying the existing SystemVerilog files and adding new ones. <em>top.sv</em> is the top-level SystemVerilog file and <em>Core.sv</em> is your processor core. The README file contains more detailed instructions.</p>
+<p><strong>Project Report</strong>
+In addition to submitting your code (using &ldquo;make submit&rdquo;), you should also submit a short report (ideally, no more than 3 pages). It should provide a high-level overview of your processor pipeline, the implemented features and details of each pipeline stage. In particular:</p>
+<ul>
+<li>General flavor of your processor: scalar or super-scalar, out-of-order or in-order, etc.</li>
+<li>Instruction and data cache details</li>
+<li>How your caches connect to the main memory (e.g., how you arbitrate between them)</li>
+<li>Functional units implementations</li>
+<li>Memory unit implementation</li>
+<li>How you handle data and control flow dependencies</li>
+<li>How you implement register window overflow and underflow situations</li>
+</ul>
+<p>A well-organized and comprehensive report can substantially improve your project grade. It can help me identify important aspects of your design that we might overlook otherwise. You should email me your reports by the project deadline.</p>
+<p><strong>Target Instruction Set</strong>
+Your processor should implement the user-mode (non-privileged) subset of RISCV with only Integer and Multiplication/Division instructions &ndash; RV64IM. The latest ISA specification can be found <a href="https://github.com/riscv/riscv-isa-manual/releases/download/draft-20200125-8557cb3/riscv-spec.pdf">here</a> You can ignore all other parts of the ISA in the manual. Specifically, your processor needs to implement all the instructions (and the requisite architectural state) described in the following sections of the manual:</p>
+<ul>
+<li>RV64I Base Integer Instruction Set (Chapter 5)</li>
+<li>“M” Standard Extension for Integer Multiplication and Division (Chapter 7)</li>
+</ul>
+<p><strong>Traps and Interrupts</strong>
+Your processor need not deal with external interrupts. It should treat all &ldquo;exceptions&rdquo; (i.e., traps caused by instructions) as precise—no deferred interrupts. Your implementation should correctly check for and generate all the exceptions described in the semantics of your implemented instructions.</p>
+<p><strong>Virtual Memory and MMU</strong>
+Your processor need not include any virtual memory support. Hence, you don't need to implement an MMU and can ignore the issues related to the Address Space Identifiers (ASI). Implementing a TLB is extra credit.</p>
+<hr>
+<h2 id="systemverilog">SystemVerilog</h2>
+<p>Hardware designers typically use a Hardware Description Language (HDL) to describe their designs in manners that are amenable to automatic translation to specific hardware technologies using &ldquo;Synthesis Tools&rdquo;. HDLs are used for many tasks in a hardware design flow, including hardware description, testing and verification. In this course you will use an HDL to describe your design, and perhaps write some test cases.</p>
+<p>You will implement your designs in a subset of the SystemVerilog HDL. Although it is a hardware description language, SystemVerilog has many features that make it resemble high-level programming languages such as C or C++. Many of these features, however, are primarily intended for testing and verification, and not hardware description. In this course, we will use a &ldquo;synthesizable&rdquo; subset of the language to describe your processors. A synthesizable subset is what a synthesis tool can automatically translate to hardware.</p>
+<p>Do not panic if you have not used an HDL before! We will teach and discuss SystemVerilog and its synthesizable subset (which is frankly quite simple) in enough detail in the class. We will also provide a SystemVerilog-to-C++ translator (called Verilator) to translate your SystemVerilog code to C++ code that can be compiled and run to simulate your design. We will provide the necessary testing infrastructure that you will compile together with Verilator's output to create a fully functional simulator for your design.</p>
+<p><strong>Resources</strong></p>
+<ul>
+<li><a href="http://www.asic-world.com/verilog/veritut.html">Verilog tutorials from asic-world.com</a>. SystemVerilog is a superset of Verilog. Although we will use some enhanced features of SystemVerilog (such as &ldquo;logic&rdquo; data type instead of &ldquo;wire&rdquo; or &ldquo;reg&rdquo;, &ldquo;always_ff&rdquo; and &ldquo;always_comb&rdquo; instead of &ldquo;always&rdquo;, etc.), almost all of the RTL design principles and coding styles we use in this class have their origins in Verilog. I suggest that you begin with the following sections: <a href="%22http://www.asic-world.com/verilog/verilog_one_day.html%22">&ldquo;Verilog In One Day&rdquo;</a>, <a href="http://www.asic-world.com/verilog/first.html">&ldquo;My first program in Verilog&rdquo;</a>, and <a href="http://www.asic-world.com/verilog/vbehave.html">&ldquo;Verilog Behavioral Modeling&rdquo;</a>. The rest of the tutorials can serve as more advanced reference material when you need them.</li>
+<li>The above tutorial in a single <a href="http://www.ece.umd.edu/class/enee359a.S2008/verilog_tutorial.pdf">PDF</a></li>
+<li><a href="http://www.sunburst-design.com/papers/CummingsSNUG2003SJ_SystemVerilogFSM.pdf">Synthesizable Finite State Machine Design Techniques Using SystemVerilog</a></li>
+<li><a href="http://www.cl.cam.ac.uk/teaching/1011/ECAD+Arch/files/SystemVerilogCheatSheet.pdf">SystemVerilog Cheat Sheet</a></li>
+<li><a href="https://compas.cs.stonybrook.edu/~nhonarmand/courses/sp18/cse502/res/date04_systemverilog.pdf">SystemVerilog for VHDL Users</a></li>
+<li><a href="http://www.eda.org/sv/SystemVerilog_3.1a.pdf">SystemVerilog 3.1a Language Reference Manual (LRM)</a></li>
+<li><a href="http://www.veripool.org/wiki/verilog-mode">Verilog mode for Emacs</a></li>
+<li><a href="http://www.veripool.org/wiki/verilator">Introduction to Verilator</a> (already installed in your VMs)</li>
+<li><a href="http://gtkwave.sourceforge.net/">GTKWave</a>: Open-source, multi-platform waveform viewer (already installed in your VMs)</li>
+</ul>
+<hr>
+<h2 id="infrastructure">Infrastructure</h2>
+<p>Each student enrolled in the class will be given a Linux virtual machine on a departmental teaching cluster with the basic required software installed. You will have root access to this virtual machine, and be able to install additional tools (editors, debuggers, etc) as you see fit.</p>
+<p><strong>Accessing Your VMs</strong></p>
+<p>Student VMs will contain all the software needed for the lab assignments, including Verilator, DRAMSim2, gtkwave and the RISCV cross-compiler toolchain. You will receive further instructions on how to access the VM in a private email, after you have submitted your group information to me.</p>
+<p><strong>Installing on your own machines</strong></p>
+<p>You are also welcome to install the needed software on your own machine. The course staff will provide you with the necessary instructions, but is not available to help you debug your personal laptop configuration.</p>
+<p>You will need to install Verilator, gtkwave and the RISCV cross-compiler toolchain. The instructions provided here are for Ubuntu; adapt them as necessary for your distro of choice.</p>
+<ul>
+<li>Verilator &amp; GTKWave | On Ubuntu, install from apt: <em>apt-get install verilator gtkwave</em>. For further instructions, see <a href="https://www.veripool.org/projects/verilator/wiki/Installing">Verilator's wikipage on installation</a>.</li>
+<li>DRAMSim2: Grab the source from <a href="https://github.com/umd-memsys/DRAMSim2/">GitHub</a>. Build it as a library (<em>make libdramsim.so</em>). For further instructions, see <a href="https://github.com/umd-memsys/DRAMSim2/blob/master/README.pdf">DRAMSim2's README.pdf</a></li>
+<li>RISC-V toolchain: I've had to modify the toolchain somewhat so contact me if you really want to build it. You don't need this as such, as I've provided compiled testcases with the handout.</li>
+</ul>
+<p><strong>Git</strong></p>
+<p>The files you will need for the labs are distributed using the Git version control system. You will be handing in your work via Git, as well. Git is a powerful, but tricky, version control system. We highly recommend taking time to understand git so that you will be comfortable using it during the labs. Here are some resources to learn more about Git:</p>
+<ul>
+<li><a href="http://www.sbf5.com/~cduan/technical/git/">Understanding git conceptually</a> This is a MUST READ if you want to work on git smoothly. (You may skip the last part: Rebasing, for now)</li>
+<li><a href="http://try.github.com/levels/1/challenges/1">Quick (15-20 min) online exercise</a> from GitHub.</li>
+<li><a href="http://www.kernel.org/pub/software/scm/git/docs/user-manual.html">Git user manual</a>
+If you are already familiar with other version control systems, you may find <a href="http://eagain.net/articles/git-for-computer-scientists/">this CS-oriented overview of Git</a> useful.</li>
+</ul>
+
+	<br>
+	
+	<div class="minimal-copyright">
+  <p style="text-align: center;">
+  
+	
+	&copy;2020 Amogh Akshintala
+	
+</div>
+
+	</div>
+</div>
+
+</body>
+</html>
