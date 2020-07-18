@@ -85,6 +85,7 @@ if (!doNotTrack) {
 </div>
 	<br>
 	
+	<div style="text-align: left">
 	<h2 id="overview">Overview</h2>
 <p>Design and implement a RISC-V-compatible processor simulator
 At the minimum, your processor must be able to execute simple RISC-V (RV64IM) programs
@@ -200,12 +201,12 @@ Your processor should implement the user-mode (non-privileged) subset of RISCV w
 <p><strong>Traps and Interrupts</strong>
 Your processor need not deal with external interrupts. It should treat all &ldquo;exceptions&rdquo; (i.e., traps caused by instructions) as precise—no deferred interrupts. Your implementation should correctly check for and generate all the exceptions described in the semantics of your implemented instructions.</p>
 <p><strong>Virtual Memory and MMU</strong>
-Your processor need not include any virtual memory support. Hence, you don't need to implement an MMU and can ignore the issues related to the Address Space Identifiers (ASI). Implementing a TLB is extra credit.</p>
+Your processor need not include any virtual memory support. Hence, you don&rsquo;t need to implement an MMU and can ignore the issues related to the Address Space Identifiers (ASI). Implementing a TLB is extra credit.</p>
 <hr>
 <h2 id="systemverilog">SystemVerilog</h2>
 <p>Hardware designers typically use a Hardware Description Language (HDL) to describe their designs in manners that are amenable to automatic translation to specific hardware technologies using &ldquo;Synthesis Tools&rdquo;. HDLs are used for many tasks in a hardware design flow, including hardware description, testing and verification. In this course you will use an HDL to describe your design, and perhaps write some test cases.</p>
 <p>You will implement your designs in a subset of the SystemVerilog HDL. Although it is a hardware description language, SystemVerilog has many features that make it resemble high-level programming languages such as C or C++. Many of these features, however, are primarily intended for testing and verification, and not hardware description. In this course, we will use a &ldquo;synthesizable&rdquo; subset of the language to describe your processors. A synthesizable subset is what a synthesis tool can automatically translate to hardware.</p>
-<p>Do not panic if you have not used an HDL before! We will teach and discuss SystemVerilog and its synthesizable subset (which is frankly quite simple) in enough detail in the class. We will also provide a SystemVerilog-to-C++ translator (called Verilator) to translate your SystemVerilog code to C++ code that can be compiled and run to simulate your design. We will provide the necessary testing infrastructure that you will compile together with Verilator's output to create a fully functional simulator for your design.</p>
+<p>Do not panic if you have not used an HDL before! We will teach and discuss SystemVerilog and its synthesizable subset (which is frankly quite simple) in enough detail in the class. We will also provide a SystemVerilog-to-C++ translator (called Verilator) to translate your SystemVerilog code to C++ code that can be compiled and run to simulate your design. We will provide the necessary testing infrastructure that you will compile together with Verilator&rsquo;s output to create a fully functional simulator for your design.</p>
 <p><strong>Resources</strong></p>
 <ul>
 <li><a href="http://www.asic-world.com/verilog/veritut.html">Verilog tutorials from asic-world.com</a>. SystemVerilog is a superset of Verilog. Although we will use some enhanced features of SystemVerilog (such as &ldquo;logic&rdquo; data type instead of &ldquo;wire&rdquo; or &ldquo;reg&rdquo;, &ldquo;always_ff&rdquo; and &ldquo;always_comb&rdquo; instead of &ldquo;always&rdquo;, etc.), almost all of the RTL design principles and coding styles we use in this class have their origins in Verilog. I suggest that you begin with the following sections: <a href="%22http://www.asic-world.com/verilog/verilog_one_day.html%22">&ldquo;Verilog In One Day&rdquo;</a>, <a href="http://www.asic-world.com/verilog/first.html">&ldquo;My first program in Verilog&rdquo;</a>, and <a href="http://www.asic-world.com/verilog/vbehave.html">&ldquo;Verilog Behavioral Modeling&rdquo;</a>. The rest of the tutorials can serve as more advanced reference material when you need them.</li>
@@ -227,9 +228,9 @@ Your processor need not include any virtual memory support. Hence, you don't nee
 <p>You are also welcome to install the needed software on your own machine. The course staff will provide you with the necessary instructions, but is not available to help you debug your personal laptop configuration.</p>
 <p>You will need to install Verilator, gtkwave and the RISCV cross-compiler toolchain. The instructions provided here are for Ubuntu; adapt them as necessary for your distro of choice.</p>
 <ul>
-<li>Verilator &amp; GTKWave | On Ubuntu, install from apt: <em>apt-get install verilator gtkwave</em>. For further instructions, see <a href="https://www.veripool.org/projects/verilator/wiki/Installing">Verilator's wikipage on installation</a>.</li>
-<li>DRAMSim2: Grab the source from <a href="https://github.com/umd-memsys/DRAMSim2/">GitHub</a>. Build it as a library (<em>make libdramsim.so</em>). For further instructions, see <a href="https://github.com/umd-memsys/DRAMSim2/blob/master/README.pdf">DRAMSim2's README.pdf</a></li>
-<li>RISC-V toolchain: I've had to modify the toolchain somewhat so contact me if you really want to build it. You don't need this as such, as I've provided compiled testcases with the handout.</li>
+<li>Verilator &amp; GTKWave | On Ubuntu, install from apt: <em>apt-get install verilator gtkwave</em>. For further instructions, see <a href="https://www.veripool.org/projects/verilator/wiki/Installing">Verilator&rsquo;s wikipage on installation</a>.</li>
+<li>DRAMSim2: Grab the source from <a href="https://github.com/umd-memsys/DRAMSim2/">GitHub</a>. Build it as a library (<em>make libdramsim.so</em>). For further instructions, see <a href="https://github.com/umd-memsys/DRAMSim2/blob/master/README.pdf">DRAMSim2&rsquo;s README.pdf</a></li>
+<li>RISC-V toolchain: I&rsquo;ve had to modify the toolchain somewhat so contact me if you really want to build it. You don&rsquo;t need this as such, as I&rsquo;ve provided compiled testcases with the handout.</li>
 </ul>
 <p><strong>Git</strong></p>
 <p>The files you will need for the labs are distributed using the Git version control system. You will be handing in your work via Git, as well. Git is a powerful, but tricky, version control system. We highly recommend taking time to understand git so that you will be comfortable using it during the labs. Here are some resources to learn more about Git:</p>
@@ -240,7 +241,9 @@ Your processor need not include any virtual memory support. Hence, you don't nee
 If you are already familiar with other version control systems, you may find <a href="http://eagain.net/articles/git-for-computer-scientists/">this CS-oriented overview of Git</a> useful.</li>
 </ul>
 
+	</div>
 	<br>
+	<hr>
 	
 	<div class="minimal-copyright">
   <p style="text-align: center;">
